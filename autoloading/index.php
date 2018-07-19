@@ -1,5 +1,15 @@
 <?php
 
+spl_autoload_register(
+  function($className){
+    $fileName= __DIR__. '/'.$className.'.php';
+    require_once ($fileName);
+  }
+);
+
+// spl_autoload_register('findClass');
+// findClass('Logger');
+
 use Human\Human as Human;
 use Human\Leg;
 
@@ -31,7 +41,7 @@ if (isset($_POST['human'])) {
         <title>Insert title here</title>
     </head>
     <body>
-    
+
     	<form method="POST">
     		<fieldset>
         		<input type="text" name="human[name]" placeholder="name">
@@ -42,19 +52,19 @@ if (isset($_POST['human'])) {
         			<option value="other">Other</option>
         		</select>
     		</fieldset>
-    		
+
     		<fieldset>
         		<input type="text" name="human[eye][color]" placeholder="eye color">
         		<input type="text" name="human[eye][quality]" placeholder="eye quality">
     		</fieldset>
-    		
+
     		<fieldset>
         		<input type="text" name="human[hair][color]" placeholder="hair color">
         		<input type="number" name="human[hair][length]" placeholder="hair length">
     		</fieldset>
-    		
+
     		<button type="submit">Submit</button>
     	</form>
-    
+
     </body>
 </html>
